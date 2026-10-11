@@ -1,0 +1,4 @@
+import { useEffect, type ReactNode } from 'react';
+import { X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+export function Modal({title,onClose,children}:{title:string;onClose:()=>void;children:ReactNode}){useEffect(()=>{const handler=(e:KeyboardEvent)=>{if(e.key==='Escape')onClose()};document.addEventListener('keydown',handler);const previous=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.removeEventListener('keydown',handler);document.body.style.overflow=previous}},[onClose]);return <div className="modal-backdrop" onClick={onClose}><section className="modal" role="dialog" aria-modal="true" aria-label={title} onClick={e=>e.stopPropagation()}><div className="modal-header"><h2>{title}</h2><Button variant="ghost" size="icon" onClick={onClose} aria-label="Cerrar"><X/></Button></div>{children}</section></div>}

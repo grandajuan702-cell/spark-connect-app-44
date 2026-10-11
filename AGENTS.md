@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Use distinct TanStack routes for discovery, login, matches, messages and profile; keeps each primary screen navigable and shareable.
+- Keep shared UniMatch UI and demo state under src/components/unimatch; makes cross-screen interactions consistent without pretending to provide authentication or durable storage.
+- Reference original profile photos through Lovable Assets JSON pointers; keeps binary media outside source control.
+- Keep all visual tokens and responsive rules in src/styles.css; preserves the supplied design consistently across screens.
